@@ -73,13 +73,13 @@ document.body.addEventListener('keydown',
         document.getElementById('live').style.width = '100%';
         document.getElementById('live').style.height = `${ window.innerWidth * imgAspect }px`;
       }
-
+      
       document.getElementById('keyframes').innerText = `
-        @keyframes comments {
-          0% {
-            background-position: 0 0;
+      @keyframes comments {
+        0% {
+          background-position: 0 0;
           }
-
+          
           100% {
             background-position: 0 -${ document.getElementById('live').clientHeight * 0.305 }px;
           }
@@ -143,27 +143,27 @@ const loadModels = async () => {
       //faceapi.draw.drawDetections(canvas, resizedResults);
 
        resizedResults.forEach(({ detection, expressions }) => {
-          // console.log(expressions.sad);
-          if (document.querySelector('#emotion').checked) {
-            if (.4 < expressions.happy) {
-              document.getElementById('happy').style.opacity = 1;
-              document.getElementById('sad').style.opacity = 0;
-              document.getElementById('angry').style.opacity = 0;
-            } else if (.4 < expressions.sad) {
-              document.getElementById('happy').style.opacity = 0;
-              document.getElementById('sad').style.opacity = 1;
-              document.getElementById('angry').style.opacity = 0;
-            } else if (.4 < expressions.angry) {
-              document.getElementById('happy').style.opacity = 0;
-              document.getElementById('sad').style.opacity = 0;
-              document.getElementById('angry').style.opacity = 1;
-            } else {
-              document.getElementById('happy').style.opacity = 0;
-              document.getElementById('sad').style.opacity = 0;
-              document.getElementById('angry').style.opacity = 0;
-            }
+        //console.log(expressions.sad);
+        if (document.querySelector('#emotion').checked) {
+          if (.4 < expressions.happy) {
+            document.getElementById('happy').style.opacity = 1;
+            document.getElementById('sad').style.opacity = 0;
+            document.getElementById('angry').style.opacity = 0;
+          } else if (.4 < expressions.sad) {
+            document.getElementById('happy').style.opacity = 0;
+            document.getElementById('sad').style.opacity = 1;
+            document.getElementById('angry').style.opacity = 0;
+          } else if (.4 < expressions.angry) {
+            document.getElementById('happy').style.opacity = 0;
+            document.getElementById('sad').style.opacity = 0;
+            document.getElementById('angry').style.opacity = 1;
+          } else {
+            document.getElementById('happy').style.opacity = 0;
+            document.getElementById('sad').style.opacity = 0;
+            document.getElementById('angry').style.opacity = 0;
           }
-            
+        }
+
               // 矩形の情報はdetection.boxに格納されている
               const width = image.width * marginVal;
               const height = image.height * marginVal;
