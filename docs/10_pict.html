@@ -66,10 +66,16 @@
       const img = new Image();
 
       img.onload = () => {
+        const maxSize = 600;
         const aspect =  img.height / img.width;
 
-        canvas.width = Math.min(600, img.width);
-        canvas.height = canvas.width * aspect;
+        if (aspect < 1) {
+          canvas.width = Math.min(maxSize, img.width);
+          canvas.height = canvas.width * aspect;
+        } else {
+          canvas.height = Math.min(maxSize, img.height);
+          canvas.width = canvas.height / aspect;
+        }
 
         pica().resize(img, canvas).then(() => {
           list.push(canvas.toDataURL('image/png'));
