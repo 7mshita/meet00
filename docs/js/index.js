@@ -2,6 +2,8 @@ let marginVal = 1;
 let posix = 1;
 let posiy = 1;
 
+let nuiItem = localStorage.getItem('nuiItem') || '/images/cage_neutral.png';
+
 document.body.addEventListener('keydown',
     event => {
         if (event.key === ' ' ) {
@@ -109,7 +111,7 @@ const loadModels = async () => {
   const video = document.querySelector("video");
   // 画像セットアップ
   const image = new Image();
-  image.src = `/images/cage_neutral.png`;
+  image.src = nuiItem;
   await loadModels();
   await startVideo(video);
 
