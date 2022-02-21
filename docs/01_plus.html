@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nui-meet</title>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+    integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+    crossorigin="anonymous"
+  ></script>
+  <style>
+    body {
+      font-size: 0;
+      background-color: #ffb6c1;
+    }
+
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      background: #fff;
+    }
+
+    li + li {
+      margin-left: 8px;
+    }
+
+    .nui {
+      width: 225px; height: 225px;
+      object-fit: contain;
+    }
+
+    [data-delete] {
+      position: absolute;
+      top: 0; left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul>
+      <li>
+        <a data-index="1">
+          <img class="nui" src="images/cage_neutral.png" />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const maxLength = 4;
+    const list = [];
+
+    if (localStorage.getItem('nuiList')) {
+      JSON.parse(localStorage.getItem('nuiList')).forEach((item, i) => {
+        list.push(item);
+
+        $('ul').append($(`
+          <li>
+            <a data-index="${ i + 2 }">
+              <img class="nui" src="${ item }" />
+            </a>
+            <img data-delete="${ i }" src="img/delete.png" />
+          </li>
+        `));
+      });
+    }
+
+    $('[data-delete]').on('click', (evt) => {
+      if (confirm('削除しますか？')) {
+        list.splice(evt.target.dataset.delete, 1);
+        localStorage.setItem('nuiList', JSON.stringify(list));
+        location.reload();
+      };
+    });
+
+    $('[data-index]').on('click', (evt) => {
+      localStorage.setItem('nuiItem', evt.target.src);
+      location.href = 'meet.html';
+    });
+
+    if (list.length < maxLength) {
+      $('ul').append($(`
+        <li>
+          <a href="10_pict.html">
+            <img src="img/img.jpg" />
+          </a>
+        </li>
+      `));
+    }
+
+  </script>
+</body>
+</html>
