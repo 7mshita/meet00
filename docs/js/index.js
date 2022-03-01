@@ -31,17 +31,17 @@ document.body.addEventListener('keydown',
         }
     });
 
-    document.querySelector('#size').addEventListener('input', (event) => {
+    document.querySelector('#size input').addEventListener('input', (event) => {
       console.log(Number(event.target.value));
       marginVal = Number(event.target.value);
     });
 
-    document.querySelector('#x').addEventListener('input', (event) => {
+    document.querySelector('#x input').addEventListener('input', (event) => {
       console.log(Number(event.target.value));
       posix = Number(event.target.value);
     });
 
-    document.querySelector('#y').addEventListener('input', (event) => {
+    document.querySelector('#y input').addEventListener('input', (event) => {
       console.log(Number(event.target.value));
       posiy = Number(event.target.value);
     });
@@ -146,7 +146,7 @@ const loadModels = async () => {
 
        resizedResults.forEach(({ detection, expressions }) => {
         //console.log(expressions.sad);
-        if (document.querySelector('#emotion').checked) {
+        if (document.querySelector('#emotion input').checked) {
           if (.4 < expressions.happy) {
             document.getElementById('happy').style.opacity = 1;
             document.getElementById('sad').style.opacity = 0;
