@@ -75,15 +75,15 @@ document.body.addEventListener('keydown',
         document.getElementById('live').style.width = '100%';
         document.getElementById('live').style.height = `${ window.innerWidth * imgAspect }px`;
       }
-      
+
       document.getElementById('keyframes').innerText = `
-      @keyframes comments {
-        0% {
-          background-position: 0 0;
+        @keyframes comments {
+          0% {
+            background-position: 0 0;
           }
-          
+
           100% {
-            background-position: 0 -${ document.getElementById('live').clientHeight * 0.305 }px;
+            background-position: 0 -1154px;
           }
         }
       `;
